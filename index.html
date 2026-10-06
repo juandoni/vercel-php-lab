@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS Corp | Portal de Acceso</title>
+    <!-- TODO: Mover credenciales de prueba a un gestor de secretos antes de Q4 -->
+    <!-- API Base URL: /api.php -->
+</head>
+<body>
+    <header>
+        <h1>NEXUS Corp - Portal Corporativo</h1>
+        <nav>
+            <a href="/">Inicio</a> | 
+            <a href="/login.php">Acceso</a> | 
+            <a href="/about.html">Nosotros</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Bienvenido al Sistema de Gestión v2.4.1</h2>
+        <p>Estado del servicio: <span id="status">Conectando...</span></p>
+        <form action="/login.php" method="POST">
+            <label>Usuario: <input type="text" name="username"></label><br>
+            <label>Contraseña: <input type="password" name="password"></label><br>
+            <button type="submit">Ingresar</button>
+        </form>
+    </main>
+    <script>
+        fetch('/api.php?action=health')
+            .then(res => res.json())
+            .then(data => document.getElementById('status').innerText = data.status)
+            .catch(err => document.getElementById('status').innerText = 'Error de conexión');
+    </script>
+</body>
+</html>

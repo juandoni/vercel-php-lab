@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin.php
+Disallow: /config.php
+Disallow: /backup.sql
+Disallow: /.env
+Disallow: /api.php
+Sitemap: /sitemap.xml
